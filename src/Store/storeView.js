@@ -2,7 +2,8 @@ import {makeAutoObservable} from "mobx";
 
 class StoreView {
     activeView = {
-        app: "auth",
+        app: "timetable",
+        timetable: "today",
     };
 
     constructor() {
