@@ -20,9 +20,10 @@ const TimeTable = observer((props) => {
             <View activeView={storeView.activeView.timetable}>
                 <Day id="today" titleHeader={{titleHeader, setTitleHeader}}/>
                 <Day id="tomorrow" titleHeader={{titleHeader, setTitleHeader}}/>
-                <Week id="firstWeek" titleHeader={{titleHeader, setTitleHeader}}/>
+                <Week id="week" titleHeader={{titleHeader, setTitleHeader}}/>
                 <Week id="secondWeek" titleHeader={{titleHeader, setTitleHeader}}/>
             </View>
+            <Toolbar/>
             <TabBar/>
         </>
     );

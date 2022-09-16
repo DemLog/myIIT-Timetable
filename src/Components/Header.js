@@ -57,7 +57,7 @@ export const Header = observer((props) => {
                     <Box sx={{display: 'flex', alignItems: "center"}}>
                         <img src={logoHeader} className="logo-header"/>
                         <Typography variant="h6" noWrap component="a" href="/" sx={{
-                            display: {xs: 'none', md: 'flex'},
+                            // display: {xs: 'none', md: 'flex'},
                             textDecoration: 'none',
                             color: 'inherit',
                             letterSpacing: "-1px",
@@ -65,11 +65,11 @@ export const Header = observer((props) => {
                         }}>
                             / Расписание</Typography>
                     </Box>
-                    <Box>
-                        <Typography variant="h6">
-                            {props.title}
-                        </Typography>
-                    </Box>
+                    {/*<Box>*/}
+                    {/*    <Typography variant="h6">*/}
+                    {/*        {props.title}*/}
+                    {/*    </Typography>*/}
+                    {/*</Box>*/}
                     <Box sx={{display: {xs: 'none', md: 'block'}}}>
                         <ThemeProvider theme={themeTabs}>
                             <BottomNavigation showLabels value={storeTabs.activeTab} onChange={handleChange}>

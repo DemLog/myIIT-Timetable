@@ -17,9 +17,11 @@ const Day = observer((props) => {
         <Container sx={{mt: 2}}>
             <Box sx={{boxShadow: 2}}>
                 <List disablePadding sx={{width: '100%', bgcolor: 'background.paper'}}
-                      subheader={<><ListSubheader component="div">
-                          4 пары с 9:40 по 16:30
-                      </ListSubheader><Divider variant="middle"/></>
+                      subheader={<>
+                          <Typography variant="h6" sx={{ml: 2}}>Понедельник, 29 февраля</Typography>
+                          <ListSubheader component="div" sx={{lineHeight: '24px'}}>
+                              4 пары с 9:40 по 16:30</ListSubheader>
+                          <Divider variant="middle"/></>
                       }>
                     <ListItemButton divider disabled>
                         <Box className="time-list-item">
