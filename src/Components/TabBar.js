@@ -14,12 +14,14 @@ import storeView from "../Store/storeView";
 
 export const TabBar = observer((props) => {
     const handleChange = (e, value) => {
+        if (value === "profile") return storeView.changeView("app", value);
         storeTabs.changeTab(value);
         storeView.changeView("timetable", value);
     };
 
     return (
-        <Paper sx={{position: 'fixed', zIndex: 1000, bottom: 0, left: 0, right: 0, display: {xs: 'block', md: 'none'}}} elevation={6}>
+        <Paper sx={{position: 'fixed', zIndex: 1000, bottom: 0, left: 0, right: 0, display: {xs: 'block', md: 'none'}}}
+               elevation={6}>
             <BottomNavigation showLabels value={storeTabs.activeTab} onChange={handleChange}>
                 <BottomNavigationAction
                     value="today"
