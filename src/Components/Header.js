@@ -53,7 +53,7 @@ export const Header = observer((props) => {
 
     return (
         <HideOnScroll direction="down" {...props}>
-            <AppBar sx={{boxShadow: 'none'}}>
+            <AppBar>
                 <Toolbar sx={{display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
                     <Box sx={{display: 'flex', alignItems: "center"}}>
                         <img src={logoHeader} className="logo-header"/>

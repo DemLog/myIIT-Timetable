@@ -9,6 +9,9 @@ import TimeTable from "./Timetable/timetable";
 import Profile from "./Profile/Profile";
 
 import "./app.css";
+import Info from "./Profile/panels/Info";
+import Devices from "./Profile/panels/Devices";
+import Help from "./Profile/panels/Help";
 
 const App = observer((props) => {
     const [themeUI, setThemeUI] = useState(createTheme({palette: {mode: 'light',},})); // переезд
@@ -18,6 +21,9 @@ const App = observer((props) => {
             <View activeView={storeView.activeView.app}>
                 <TimeTable id="timetable"/>
                 <Profile id="profile"/>
+                <Info id="info"/>
+                <Devices id="devices"/>
+                <Help id="help"/>
             </View>
         </CssBaseline>
         </ThemeProvider>

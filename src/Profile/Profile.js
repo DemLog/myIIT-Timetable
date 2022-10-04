@@ -5,7 +5,7 @@ import {observer} from "mobx-react-lite";
 import {
     Avatar,
     Box,
-    Container,
+    Container, Dialog, DialogTitle,
     List, ListItem,
     ListItemButton,
     ListItemIcon,
@@ -24,10 +24,26 @@ import HelpIcon from '@mui/icons-material/Help';
 import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
 
+const DialogSubgroup = (props) => {
+    return (
+        <Dialog onClose={props.handleClose} open={props.open}>
+            <DialogTitle>Выберите подгруппу</DialogTitle>
+            dfdffd
+        </Dialog>
+    );
+}
+
+const DialogMessageDev = (props) => {
+    return (
+        <Dialog onClose={() => props.handleClose()} open={props.open}>
+            <DialogTitle>Написать разработчику</DialogTitle>
+            dfdffd
+        </Dialog>
+    );
+}
 
 const Profile = observer((props) => {
     const backView = () => {
-        console.log(1)
         storeView.changeView("app", "timetable")
     };
 
@@ -41,6 +57,11 @@ const Profile = observer((props) => {
 });
 
 export const ProfileList = (props) => {
+    const [dialogs, setDialogs] = useState({
+        subgroupOpen: false,
+        messageDevOpen: false
+    });
+
     return (
         <Container sx={{mt: 2}}>
             <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -50,19 +71,15 @@ export const ProfileList = (props) => {
             </Box>
             <Box sx={{display: 'flex', flexDirection: 'column'}}>
                 <List sx={{width: '100%', boxShadow: 2, mt: 2}}>
-                    <ListItemButton divider>
+                    <ListItemButton divider onClick={() => storeView.changeView("app", "info")}>
                         <ListItemIcon><ArticleIcon /></ListItemIcon>
                         <ListItemText primary="Информация о профиле" />
                     </ListItemButton>
-                    <ListItemButton divider>
+                    <ListItemButton divider onClick={() => setDialogs({...dialogs, subgroupOpen: true})}>
                         <ListItemIcon><LibraryAddCheckIcon /></ListItemIcon>
                         <ListItemText primary="Выбрать подгруппу" secondary="II подгруппа"/>
                     </ListItemButton>
-                    <ListItemButton divider>
-                        <ListItemIcon><ContrastIcon /></ListItemIcon>
-                        <ListItemText primary="Оформление" />
-                    </ListItemButton>
-                    <ListItemButton divider>
+                    <ListItemButton divider onClick={() => storeView.changeView("app", "devices")}>
                         <ListItemIcon><SmartphoneIcon /></ListItemIcon>
                         <ListItemText primary="Устройства" />
                     </ListItemButton>
@@ -73,21 +90,29 @@ export const ProfileList = (props) => {
                     </ListItemButton>
                 </List>
                 <List sx={{width: '100%', boxShadow: 2, mt: 3}}>
-                    <ListItemButton divider>
+                    <ListItemButton divider onClick={() => storeView.changeView("app", "help")}>
                         <ListItemIcon><HelpIcon /></ListItemIcon>
                         <ListItemText primary="Помощь" />
                     </ListItemButton>
-                    <ListItemButton>
+                    <ListItemButton onClick={() => setDialogs({...dialogs, messageDevOpen: true})}>
                         <ListItemIcon><ForwardToInboxIcon /></ListItemIcon>
                         <ListItemText primary="Написать разработчику" />
                     </ListItemButton>
                 </List>
-                <List sx={{width: '100%', boxShadow: 2, mt: 1}}>
+                <List sx={{width: '100%', boxShadow: 2, my: 1}}>
                     <ListItemButton>
                         <ListItemText sx={{textAlign: 'center', m: 0, color: 'red'}} primary="Выйти" />
                     </ListItemButton>
                 </List>
             </Box>
+            <DialogSubgroup
+                open={dialogs.subgroupOpen}
+                onClose={() => setDialogs({...dialogs, subgroupOpen: false})}
+            />
+            <DialogMessageDev
+                open={dialogs.messageDevOpen}
+                onClose={() => setDialogs({...dialogs, messageDevOpen: false})}
+            />
         </Container>
     );
 };
